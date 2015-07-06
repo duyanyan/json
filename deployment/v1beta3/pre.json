@@ -1,9 +1,8 @@
 {
     "kind": "DeploymentConfig",
-    "apiVersion": "v1",
+    "apiVersion": "v1beta3",
     "metadata": {
         "name": "hooks",
-        "creationTimestamp": null,
         "labels": {
             "name": "mysql"
         }
@@ -16,7 +15,7 @@
                     "failurePolicy": "Retry",
                     "execNewPod": {
                         "command": [
-                            "/bin/true"
+                            "/bin/false"
                         ],
                         "env": [
                             {
@@ -28,7 +27,7 @@
                     }
                 },
                 "post": {
-                    "failurePolicy": "Retry",
+                    "failurePolicy": "Ignore",
                     "execNewPod": {
                         "command": [
                             "/bin/false"
@@ -89,6 +88,7 @@
                         "resources": {},
                         "terminationMessagePath": "/dev/termination-log",
                         "imagePullPolicy": "Always",
+                        "capabilities": {},
                         "securityContext": {
                             "capabilities": {},
                             "privileged": false
@@ -100,5 +100,14 @@
             }
         }
     },
-    "status": {}
+    "status": {
+        "latestVersion": 1,
+        "details": {
+            "causes": [
+                {
+                    "type": "ConfigChange"
+                }
+            ]
+        }
+    }
 }

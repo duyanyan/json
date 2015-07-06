@@ -1,9 +1,8 @@
 {
     "kind": "DeploymentConfig",
-    "apiVersion": "v1",
+    "apiVersion": "v1beta3",
     "metadata": {
         "name": "hooks",
-        "creationTimestamp": null,
         "labels": {
             "name": "mysql"
         }
@@ -89,6 +88,7 @@
                         "resources": {},
                         "terminationMessagePath": "/dev/termination-log",
                         "imagePullPolicy": "Always",
+                        "capabilities": {},
                         "securityContext": {
                             "capabilities": {},
                             "privileged": false
@@ -100,5 +100,14 @@
             }
         }
     },
-    "status": {}
+    "status": {
+        "latestVersion": 1,
+        "details": {
+            "causes": [
+                {
+                    "type": "ConfigChange"
+                }
+            ]
+        }
+    }
 }
